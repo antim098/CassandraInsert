@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import java.sql.Timestamp;
 import java.util.UUID;
 
 public class Insert {
@@ -27,18 +28,21 @@ public class Insert {
         }
         long i = 0;
         try {
+            Timestamp start_time = new Timestamp(System.currentTimeMillis());
+            System.out.println("Started at:" + start_time);
             for (; i < count; i++) {
                 UUID timeBasedUuid = UUIDs.timeBased();
                 jsonRecord.put("ts", String.valueOf(timeBasedUuid));
                 com.datastax.driver.core.querybuilder.Insert insert_stmt = QueryBuilder.insertInto("test", tablename).json(jsonRecord.toString()).defaultUnset();
                 client.getSession().execute(insert_stmt);
             }
+            Timestamp end_time = new Timestamp(System.currentTimeMillis());
             System.out.println("Inserted records : " + i);
+            System.out.println("Ended at:" + end_time);
             System.exit(0);
         } catch (Exception e) {
             System.out.println("Inserted records :" + i);
             System.exit(0);
         }
     }
-
 }

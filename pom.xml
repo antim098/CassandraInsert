@@ -57,7 +57,7 @@
     </dependencies>
 
     <build>
-        <finalName>dateutils</finalName>
+        <finalName>cassandraInsert</finalName>
         <plugins>
 
             <!-- download source code in Eclipse, best practice -->
@@ -95,7 +95,7 @@
                     <!-- MainClass in mainfest make a executable jar -->
                     <archive>
                         <manifest>
-                            <mainClass>RunCassandra</mainClass>
+                            <mainClass>Insert</mainClass>
                         </manifest>
                     </archive>
 
