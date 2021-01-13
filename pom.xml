@@ -95,7 +95,7 @@
                     <!-- MainClass in mainfest make a executable jar -->
                     <archive>
                         <manifest>
-                            <mainClass>Insert</mainClass>
+                            <mainClass>InsertCassandra</mainClass>
                         </manifest>
                     </archive>
 

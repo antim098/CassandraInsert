@@ -37,7 +37,7 @@ public class InsertCassandra {
                 UUID timeBasedUuid = UUIDs.timeBased();
                 jsonRecord.put("ts", String.valueOf(timeBasedUuid));
                 Insert insert_stmt = QueryBuilder.insertInto("test", tablename).json(jsonRecord.toString()).defaultUnset();
-                session.execute(insert_stmt);
+                session.executeAsync(insert_stmt);
             }
             Timestamp end_time = new Timestamp(System.currentTimeMillis());
             System.out.println("Inserted records : " + i);
